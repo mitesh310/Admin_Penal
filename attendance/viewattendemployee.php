@@ -71,7 +71,11 @@ $len = count($resultarray);
                                                 
                                                 <div class="row">
                                                     <div class="col-6 mt-3">
-                                                        <a href="../attendance/?id=<?php echo $emp['employeeId']; ?>&name=<?php echo $emp['name']; ?>">
+                                                        <?php
+                                                        $currentMonth = date('m');
+                                                        $currentYear = date('Y');
+                                                        ?>
+                                                        <a href="../attendance/?id=<?php echo $emp['employeeId']; ?>&name=<?php echo $emp['name']; ?>&month=<?php echo $currentMonth; ?>&year=<?php echo $currentYear; ?>">
                                                             <button class="btn mb-1 btn-success" style='color:white'>View Attendance</button>
                                                         </a>
                                                     </div>

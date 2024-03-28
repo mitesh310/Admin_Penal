@@ -30,9 +30,9 @@ $(function() {
 
         calendar = new Calendar(document.getElementById('calendar'), {
             headerToolbar: {
-                left: 'prev,next today',
-                right: 'dayGridMonth,dayGridWeek,list',
-                center: 'title',
+                left:   'title',
+                center: '',
+                right:  'today '
             },
             selectable: true,
             themeSystem: 'bootstrap',
@@ -60,8 +60,6 @@ $(function() {
         });
 
         calendar.render();
-         // Get the current view's start date
-
     }
 
     // Function to check if a date is a weekend

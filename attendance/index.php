@@ -80,8 +80,8 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => 'POST',
   CURLOPT_POSTFIELDS => http_build_query(array(
     'employeeId' => $employeeId,    
-    'month' => $month, 
-    'year' => $year, 
+    'month' => $_GET['month'], 
+    'year' => $_GET['year'], 
     'workinghours' => "9",
     'status' => 'pending'
   )),
@@ -123,11 +123,56 @@ curl_setopt_array($curl, array(
             border-width: 1px !important;
         }
 
-       
+        .btn-group, .btn-group-vertical{
+            display: none;
+        }
+        .fc-direction-ltr .fc-toolbar>*>:not(:first-child){
+            display: none;
+        }
     </style>
     <div class="content-body">
         <h2 class="text-center"><?php echo $_GET ['name']?></h2>
         <div class="container py-5" id="page-container">
+         <div class="row">
+            <div class="col-md-6">
+            <select id="mySelect" class="form-control" onchange="yearFunction()">
+                <option value="">Select Year</option>
+                <?php
+                for($i=2022;$i<=2090;$i++)
+                {
+                ?>
+                <option value="<?php echo $i; ?>" <?php
+                if($i==$_GET['year'])
+                {
+                    echo "selected";
+                }
+                ?>><?php echo $i; ?></option>
+                <?php
+                }
+                ?>
+            </select>
+            </div>
+            <div class="col-md-6">
+            <select  class="form-control"  id="monthSelect" onchange="monthFunction()">
+                <option value="">Select Month</option>
+                <?php
+                for($i=1;$i<=12;$i++)
+                {
+                    $formattedMonth = sprintf('%02d', $i);
+                ?>
+                <option value="<?php echo $formattedMonth; ?>" <?php
+                if($formattedMonth==$_GET['month'])
+                {
+                    echo "selected";
+                }
+                ?>><?php echo $formattedMonth; ?></option>
+                <?php
+                }
+                ?>
+            </select>
+            </div>
+            
+    </div>   
         <div class="row">
             <div class="col-md-12">
                 <div id="calendar"></div>
@@ -218,7 +263,6 @@ curl_setopt_array($curl, array(
 include("../include/footer.php");
 ?>
 <?php 
-$sched_res = [];
 attendanceshow();
 function attendanceshow()
 {
@@ -233,15 +277,16 @@ function attendanceshow()
         CURLOPT_FOLLOWLOCATION => true,
         CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
         CURLOPT_CUSTOMREQUEST => 'POST',
-        CURLOPT_POSTFIELDS => array('year' => '2024','month' => '3','employeeId' => $_GET['id']),
+        CURLOPT_POSTFIELDS => array('year' => $_GET['year'],'month' => $_GET['month'],'employeeId' => $_GET['id']),
       ));
     
     $response = curl_exec($curl);
-    
     $resultarray = json_decode($response,true);
     curl_close($curl);
     
     $i=0;
+    
+    $sched_res = [];    
     foreach ($resultarray['data'] as $attendance) {
       
         $date = date('Y-m-d');
@@ -285,18 +330,32 @@ function attendanceshow()
 }
 ?>
 <script src="../js/new.js"></script>
-<!-- <script>
- $('body').on('click', 'button.fc-prev-button', function () {
-    var calendar = $('#calendar').fullCalendar('getCalendar');
-  var view = calendar.view;
-  var startDate = view.activeStart;
-  var endDate = view.activeEnd;
+<script>
+function yearFunction() {
+    var month = "<?php echo $_GET['month']; ?>";
+    var name = "<?php echo $_GET['name']; ?>";
+    var id = "<?php echo $_GET['id']; ?>";
+  var selectedValue = document.getElementById("mySelect").value;
+var params = "?id="+id+"&name="+name+"&year="+selectedValue+"&month="+month;
+location.href = location.pathname + params;   
+}
 
-  // Extract the month from the start date
-  var month = startDate.format('MMMM');
-  alert(month);
+function monthFunction() {
+    var year = "<?php echo $_GET['year']; ?>";
+    var name = "<?php echo $_GET['name']; ?>";
+    var id = "<?php echo $_GET['id']; ?>";
+  var selectedValue = document.getElementById("monthSelect").value;
+var params = "?id="+id+"&name="+name+"&year="+year+"&month="+selectedValue;
+location.href = location.pathname + params;   
+}
+    </script>
 
-            });
-    </script> -->
+    <script>
+       $(document).ready(function(){
+          var year = <?php echo $_GET['year']; ?>;
+          var month = "<?php echo $_GET['month']; ?>";
+          calendar.gotoDate(year+'-'+month+'-01');
+       });
+    </script>  
 
 </html>
