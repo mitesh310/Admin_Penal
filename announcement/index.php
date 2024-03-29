@@ -1,17 +1,19 @@
 <?php
-include("../include/header.php");
+include ("../include/header.php");
 $curl = curl_init();
 
-curl_setopt_array($curl, array(
-    CURLOPT_URL => 'http://localhost:8080/getannouncements',
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => '',
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 0,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => 'GET',
-)
+curl_setopt_array(
+    $curl,
+    array(
+        CURLOPT_URL => 'http://localhost:8080/getannouncements',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+    )
 );
 
 $response = curl_exec($curl);
@@ -19,27 +21,27 @@ $resultarray = json_decode($response, true);
 curl_close($curl);
 
 
-if(isset($_GET['id']))
-{
+if (isset($_GET['id'])) {
 
-$curl = curl_init();
+    $curl = curl_init();
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://localhost:8080/deleteannouncementbyid/'.$_GET['id'],
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'GET',
-));
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => 'http://localhost:8080/deleteannouncementbyid/' . $_GET['id'],
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+    )
+    );
 
-$response = curl_exec($curl);
+    $response = curl_exec($curl);
 
-curl_close($curl);
-echo $response;
-header("location:../announcement/");
+    curl_close($curl);
+    echo $response;
+    header("location:../announcement/");
 }
 
 ?>
@@ -48,14 +50,6 @@ header("location:../announcement/");
 
 
 <div class="content-body">
-
-    <!-- <div class="row page-titles mx-0">
-        <div class="col p-md-0">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="../dashboard">Dashboard</a></li>
-            </ol>
-        </div>
-    </div> -->
     <!-- row -->
 
     <div class="container-fluid">
@@ -91,7 +85,7 @@ header("location:../announcement/");
                                 <td>
                                     <?php echo $i; ?>
                                 </td>
-                                
+
                                 <td>
                                     <?php echo $holiday['title']; ?>
                                 </td>
@@ -104,7 +98,8 @@ header("location:../announcement/");
                                 <td><a href="addannouncement.php?id=<?php echo $holiday['announcementId']; ?>">
                                         <img src="../images/edit.png"></img>
                                     </a>
-                                    <a href="?id=<?php echo $holiday['announcementId']; ?>" onclick="return confirm('Are you sure you want to delete.')" rel="noopener">
+                                    <a href="?id=<?php echo $holiday['announcementId']; ?>"
+                                        onclick="return confirm('Are you sure you want to delete.')" rel="noopener">
                                         <img src="../images/delete.png"></img>
                                     </a>
                                 </td>
@@ -123,5 +118,5 @@ header("location:../announcement/");
     <!-- #/ container -->
 </div>
 <?php
-include("../include/footer.php");
+include ("../include/footer.php");
 ?>

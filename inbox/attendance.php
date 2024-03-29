@@ -71,11 +71,6 @@ if(isset($_GET['type']))
                                     <div class="col-md-10">
                                         <h4 class="card-title">Attendance</h4>
                                     </div>   
-                                    <!-- <div class="col-md-2">
-                                        <label class="form-label">Date</label>
-                                        <input type="date" class="form-control" required>
-                                    <a href="../employee/addemployee.php" class="btn mb-1 btn-primary btn-lg">Add Employee</a>
-                                    </div>     -->
                                 </div>
 
                                 

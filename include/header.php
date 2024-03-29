@@ -318,17 +318,6 @@ $result_notification = json_decode($response,true);
                         <i class="fa-solid fa-file-invoice"></i><span class="nav-text">Notifications</span>
                         </a>
                     </li>
-                    <!-- <li class="mega-menu mega-menu-sm">
-                        <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                        <i class="fa-solid fa-landmark"></i><span class="nav-text">Policy</span>
-                        </a>
-                        <ul aria-expanded="false">
-                            <li><a href="../setting/index.php">Policy</a></li>
-                            
-                        </ul>
-                    </li> -->
-                    
-
                 </ul>
             </div>
         </div>

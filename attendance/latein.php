@@ -1,80 +1,59 @@
 <?php
-include("../include/header.php")
-?>
+include ("../include/header.php")
+    ?>
 
 <div class="content-body">
 
-            <!-- <div class="row page-titles mx-0">
-                <div class="col p-md-0">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="../dashboard">Dashboard</a></li>
-                    </ol>
-                </div>
-            </div> -->
-            <!-- row -->
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        <h4 class="card-title">Employee Late In </h4>
-                                    </div>   
-                                    <div class="col-md-2">
-                                        <!-- <label class="form-label">Date</label> -->
-                                        <input type="date" class="form-control" required>
-                                    <!-- <a href="../employee/addemployee.php" class="btn mb-1 btn-primary btn-lg">Add Employee</a> -->
-                                    </div>    
-                                </div>
+    <!-- row -->
 
-                                
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h4 class="card-title">Employee Late In </h4>
                             </div>
-                            <div class="table-responsive mb-5">
-                                    <table class="table table-striped table-bordered zero-configuration">
-                                        <thead>
-                                            <tr>
-                                                <th>Employee Name</th>
-                                                <th>Date</th>
-                                                <th>Clock In Time</th>
-                                                <th>Late In Time</th>
-                                                <th>Late In Reason</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                            </tr>
-                                            
-                                            
-                                        
-                                        </tbody>
-                                        <!-- <tfoot>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>Salary</th>
-                                            </tr>
-                                        </tfoot> -->
-                                    </table>
+                            <div class="col-md-2">
+                                <input type="date" class="form-control" required>
                             </div>
                         </div>
+
+
+                    </div>
+                    <div class="table-responsive mb-5">
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>Employee Name</th>
+                                    <th>Date</th>
+                                    <th>Clock In Time</th>
+                                    <th>Late In Time</th>
+                                    <th>Late In Reason</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <!-- #/ container -->
+        </div>
+    </div>
+    <!-- #/ container -->
 </div>
 
 
 
 <?php
-    include("../include/footer.php");
+include ("../include/footer.php");
 ?>

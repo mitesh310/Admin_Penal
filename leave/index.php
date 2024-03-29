@@ -1,20 +1,21 @@
 <?php
-include("../include/header.php")
-?>
+include ("../include/header.php")
+    ?>
 <?php
 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'http://localhost:8080/getleavesoftoday',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'GET',
-));
+    CURLOPT_URL => 'http://localhost:8080/getleavesoftoday',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => '',
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 0,
+    CURLOPT_FOLLOWLOCATION => true,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => 'GET',
+)
+);
 
 $response = curl_exec($curl);
 $todayleave = json_decode($response, true);
@@ -31,7 +32,7 @@ curl_close($curl);
                         <div class="row">
                             <div class="col-md-10">
                                 <h4 class="card-title">Upcomming Leave Person</h4>
-                            </div>   
+                            </div>
                         </div>
                     </div>
                     <div class="table-responsive mb-5">
@@ -48,14 +49,16 @@ curl_close($curl);
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php
+                                <?php
                                 $i = 1;
                                 foreach ($todayleave['data'] as $req) {
                                     ?>
-                                <tr>
-                                
                                     <tr>
-                                        <td><?php echo $i; ?></td>
+
+                                    <tr>
+                                        <td>
+                                            <?php echo $i; ?>
+                                        </td>
                                         <td>
                                             <?php echo $req['leavesDetail']['name']; ?>
                                         </td>
@@ -71,13 +74,10 @@ curl_close($curl);
                                         <td>
                                             <?php echo isset($req['endDate']) ? date('d-m-Y', strtotime($req['endDate'])) : 'N/A'; ?>
                                         </td>
-                                        <!-- <td><a href="" onclick="return confirm('Are you sure you want to Approve.')" rel="noopener" style='color:white' class="btn mb-1 btn-success">Approve</a>
-                                            <a href="" onclick="return confirm('Are you sure you want to Reject.')" rel="noopener" style='color:white' class="btn mb-1 btn-danger">Reject</a>
-                                        </td> -->
                                     </tr>
-                                </tr>
-                                <?php
-                                $i++;
+                                    </tr>
+                                    <?php
+                                    $i++;
                                 }
                                 ?>
                             </tbody>
@@ -85,7 +85,7 @@ curl_close($curl);
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </div>
@@ -94,5 +94,5 @@ curl_close($curl);
 
 
 <?php
-    include("../include/footer.php");
+include ("../include/footer.php");
 ?>
