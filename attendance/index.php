@@ -87,8 +87,11 @@ curl_setopt_array($curl, array(
   )),
 ));
 
-  return $response = curl_exec($curl);
+    $response = curl_exec($curl);
   curl_close($curl);
+
+  return $response;
+
     
 }
 
@@ -330,24 +333,24 @@ function attendanceshow()
 }
 ?>
 <script src="../js/new.js"></script>
-<script>
-function yearFunction() {
-    var month = "<?php echo $_GET['month']; ?>";
-    var name = "<?php echo $_GET['name']; ?>";
-    var id = "<?php echo $_GET['id']; ?>";
-  var selectedValue = document.getElementById("mySelect").value;
-var params = "?id="+id+"&name="+name+"&year="+selectedValue+"&month="+month;
-location.href = location.pathname + params;   
-}
+    <script>
+        function yearFunction() {
+            var month = "<?php echo $_GET['month']; ?>";
+            var name = "<?php echo $_GET['name']; ?>";
+            var id = "<?php echo $_GET['id']; ?>";
+        var selectedValue = document.getElementById("mySelect").value;
+        var params = "?id="+id+"&name="+name+"&year="+selectedValue+"&month="+month;
+        location.href = location.pathname + params;   
+        }
 
-function monthFunction() {
-    var year = "<?php echo $_GET['year']; ?>";
-    var name = "<?php echo $_GET['name']; ?>";
-    var id = "<?php echo $_GET['id']; ?>";
-  var selectedValue = document.getElementById("monthSelect").value;
-var params = "?id="+id+"&name="+name+"&year="+year+"&month="+selectedValue;
-location.href = location.pathname + params;   
-}
+        function monthFunction() {
+            var year = "<?php echo $_GET['year']; ?>";
+            var name = "<?php echo $_GET['name']; ?>";
+            var id = "<?php echo $_GET['id']; ?>";
+        var selectedValue = document.getElementById("monthSelect").value;
+        var params = "?id="+id+"&name="+name+"&year="+year+"&month="+selectedValue;
+        location.href = location.pathname + params;   
+        }
     </script>
 
     <script>
